@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS Project</title>
+    <!-- Include Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <!-- Include Font Awesome CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <!-- Include Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800&family=Poppins:wght@100;200;300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <!-- Include Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    
+
+
+
+
+</head>
+
+<body>
+    <div class="container-fluid">
+
+        <!-- main-section-->
+        <div class="main-div">
+            <!-- left-bar -->
+            <div class="left-bar">
+                <div class="logo">
+                    <h5>Employee</h5>
+                    <h4>Management</h4>
+                </div>
+                <hr>
+                <div class="two-dash">
+                    <div class="left-dashboard">
+                        <ul>
+                            <a href="">
+                                <li><i class="fa-solid fa-house"></i><span>Dashboard</span></li>
+                            </a>
+                            <a href="index.html">
+                                <li class="reloademployee"><i class="fa-solid fa-chart-simple"></i><span>Employees</span></li>
+                            </a>
+                            <a href="">
+                                <li><i class="fa-solid fa-user"></i><span>My Profile</span></li>
+                            </a>
+                            <a href="">
+                                <li><i class="fa-solid fa-lock"></i><span>Logout</span></li>
+                            </a>
+                       </ul>
+                   </div>
+                </div>
+                    <hr>
+                    <div class="left-footer">
+                        <div class="company-logo">
+                            <span>Powered by</span>
+                            <img src="images/image 1 (1).png" alt="">
+                        </div>
+                    </div>
+                </div>
+
+            <!-- left bar-end -->
+
+            <!-- right bar-start -->
+            <div class="right-employee">
+                <div class="inner-employee">
+                    <div class="employee-heading col-12">
+                        <div class="user-logo col-6">
+                            <span class="first-head">Dashboard / Employees</span>
+                            <span class="second-head">Employees</span>
+                        </div>
+                        <div class="user-search-bar col-6">
+                            <div class="search-bar">
+                                <i class="fa-solid fa-magnifying-glass"></i>
+                                <input type="text" placeholder="Search" id="searchinput">
+                                <i class="fa-regular fa-bell"></i>
+                                <div class="search-img">
+                                    <img src="images/Elipse 5 (1).png" alt="">
+
+                                </div>
+                            </div>
+
+
+                        </div>
+
+
+                    </div>
+                    <div class="fullpage">
+                        <div class="userdetail-complex">
+                            <div class="list col-12">
+                                <div class="employee-list col-6">
+                                    <span>Employees List</span>
+                                    <select class="form-select" aria-label="Default select example" id="pagenumber">
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option selected value="3">3</option>
+                                        <option value="4">4</option>
+                                        <option value="5">5</option>
+
+                                    </select>
+                                    <h6>of <span id="employee-total"></span></h6>
+
+                                </div>
+                                <div class="employee-btn col-6">
+                                    <button type="button" id="btn-filled" onclick="showemp()">Add Employee</button>
+
+                                </div>
+
+
+                                </div>
+                                <table id="table" class="table table-striped " style=" margin-top: 20px;">
+
+                                    <thead>
+                                    <tr>
+                                        <th style="width: 9%;"> Sl.No
+                                            <i class="fa-solid fa-angle-down"></i>
+                                        </th>
+                                        <th style="width:275px;">Name
+                                            <i class="fa-solid fa-angle-down"></i>
+                                        </th>
+                                            <th style="width: 22%;">Email
+                                            <i class="fa-solid fa-angle-down"></i>
+                                        </th>
+                                        <th style="width: 11%;">Phone
+                                            <i class="fa-solid fa-angle-down"></i>
+                                        </th>
+                                        <th style="width: 10%;">Gender
+                                            <i class="fa-solid fa-angle-down"></i>
+                                        </th>
+                                        <th style="width: 11%;">DOB
+                                            <i class="fa-solid fa-angle-down"></i>
+                                        </th>
+                                        <th style="width: 15%;"> Country
+                                            <i class="fa-solid fa-angle-down"></i>
+                                        </th>
+                                        <th>
+                                            
+                                        </th>
+                                   </tr>
+                                   </thead>
+                                   <tbody id="empbody">
+                                    
+                                   
+ 
+                                   </tbody>
+                                   </table>
+
+                        </div>
+                        <nav aria-label="Page navigation example">
+                        <ul class="pagination" id="paginationbtnlist">
+                      <li class="page-item">
+                              <a class="page-link" href="#" aria-label="Previous">
+                                 <span aria-hidden="true">&laquo;</span>  previous
+                              </a>
+                           </li>
+                           <li class="page-item"><a class="page-link" href="#">1</a></li>
+                           <li class="page-item"><a class="page-link" href="#">2</a></li>
+                           <li class="page-item"><a class="page-link" href="#">3</a></li>
+                           <li class="page-item">
+                              <a class="page-link" href="#" aria-label="Next">
+                                next  <span aria-hidden="true">&raquo;</span>
+                              </a>
+                           </li>
+                        </ul>
+
+                    </div>
+                </div> 
+                    <hr>
+                    <div class="user-detail-footer col-12">
+                        <div class="left-reserved col-6 py-3">
+                          <span>© 2023 All Rights Reserved. </span>
+                          <h6>Stackup</h6>
+                        </div>
+                        <div class="right-terms col-6 py-4">
+                          <span class="terms">Terms of Use</span>
+                          <span class="policy">Privacy Policy</span>
+                        </div>
+                    </div>
+            </div>
+        </div>
+                <!---------------------------------------------------------add employee form----------------------------------------------------------- -->
+
+                <div class="col-lg-6 form-part">
+                    <div class="left-section col-12 p-4" id="addEmployeeForm">
+                        <div class="form-head">
+                            <label for="title" class="heading pb-3">Add Employee</label>
+                            <button type="button" class="close-btn" onclick="closeemployeepopup()"><i
+                                    class="fa-solid fa-xmark"></i></button>
+                        </div>
+                        <div class="card upload-section text-center py-4 mb-3">
+
+                            <!-- <i class="fa-solid fa-upload"></i> -->
+                            <label for="upldimg" class="labelimg">
+                                <img src="images/default avatar.png" alt="" id="img">
+                                <h4 class="upload">Upload Image</h4>
+                                <input type="file" id="upldimg" class="" accept="image/jpg,image/jpeg,image/png"
+                                    name="avatars">
+                                <span> <label class="text-file-type">PNG, JPG files are allowed</label></span>
+                            </label>
+                        </div>
+                        <form id="forms">
+                            <div class="row py-2 l-first-row">
+                                <div class="col-md-3">
+                                    <label for="disabledSelect" class="form-label heading">Salutation</label>
+                                    <select id="salutation" class="form-select p-input">
+                                        <option value="">select</option>
+                                        <option value="Mr">Mr.</option>
+                                        <option value="Mrs">Mrs.</option>
+                                    </select>
+                                    <P id="salutationerror" class="errormsg"></P>
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="disabledTextInput" class="form-label heading">First Name</label>
+                                    <input type="text" id="firstname" class="form-control p-input" placeholder="john">
+                                    <P id="firstnameerror" class="errormsg"></P>
+                                </div>
+                                <div class="col-md-5">
+                                    <label for="disabledTextInput" class="form-label heading">Last Name</label>
+                                    <input type="text" id="lastname" class="form-control p-input" placeholder="doe">
+                                    <P id="lastnameerror" class="errormsg"></P>
+                                </div>
+                            </div>
+                            <div class="row py-2">
+                                <div class="col-sm-6">
+                                    <label for="exampleFormControlInput1" class="form-label heading">Email
+                                        address</label>
+                                    <input type="email" class="form-control p-input" id="mail"
+                                        placeholder="mail@simmmple.com">
+                                    <P id="mailerror" class="errormsg"></P>
+                                </div>
+                                <div class="col-sm-6">
+                                    <label for="exampleFormControlInput1" class="form-label heading">Mobile
+                                        Number</label>
+                                    <input type="text" class="form-control p-input" id="number"
+                                        placeholder="enter mobile number">
+                                    <P id="numbererror" class="errormsg"></P>
+                                </div>
+                            </div>
+                            <div class="row py-2">
+                                <div class="col-sm-6">
+                                    <label for="exampleFormControlInput1" class="form-label heading">Date of
+                                        Birth</label>
+                                    <input type="date" class="form-control p-input" id="dob"
+                                        placeholder="select date of birth">
+                                    <P id="boberror" class="errormsg"></P>
+                                </div>
+                                <div class="col-sm-6">
+                                    <label for="exampleFormControlInput1" class="form-label heading"
+                                        id="gender">Gender</label>
+                                    <div class="gender-radio">
+                                        <input class="form-check-input" type="radio" name="gender" id="male"
+                                            value="Male">
+                                        <span> <label class="form-check-label" for="inlineRadio1"
+                                                id="male">Male</label></span>
+                                        <input class="form-check-input" type="radio" name="gender" id="female"
+                                            value="Female">
+                                        <span> <label class="form-check-label" for="inlineRadio2"
+                                                id="female">Female</label></span>
+                                    </div>
+                                    <P id="gendererror" class="errormsg"></P>
+                                </div>
+
+                            </div>
+
+                            <div class="username row py-2">
+                                <div class="col-6">
+                                    <label for="username" class="form-label heading">Username</label>
+                                    <input type="text" id="usrnm" class="form-control p-input"
+                                        placeholder="enter username">
+                                    <P id="usernameerror" class="errormsg"></P>
+                                </div>
+
+                                <div class="col-6">
+                                    <label for="password" class="form-label heading">password</label>
+                                    <input type="password" id="psd" class="form-control p-input"
+                                        placeholder="enter password">
+                                    <P id="passworderror" class="errormsg"></P>
+                                </div>
+                            </div>
+
+                            <div class="row py-2">
+                                <div class="col-12">
+                                    <label for="qualification" class="form-label heading">Qualifications</label>
+                                    <input type="text" id="qualification" class="form-control p-input"
+                                        placeholder="enter Qualification">
+                                    <P id="qualificationerror" class="errormsg"></P>
+                                </div>
+                            </div>
+                            <div class="row py-2">
+                                <div class="col-12">
+                                    <label for="exampleFormControlInput1" class="form-label heading">Address</label>
+                                    <input type="text" id="address" class="form-control p-input"
+                                        placeholder="enter address">
+                                    <P id="addresserror" class="errormsg"></P>
+                                </div>
+                            </div>
+                            <div class="row py-2">
+                                <div class="col-sm-6 op-select">
+                                    <label for="country" class="form-label heading">Country</label>
+                                    <select id="country" class="form-select p-input">
+                                        <option value="">select country</option>
+                                        <option value="INDIA">INDIA</option>
+                                        <option value="USA">USA</option>
+                                        <option value="USA">USA</option>
+                                    </select>
+                                    <P id="countryerror" class="errormsg"></P>
+                                </div>
+                                <div class="col-sm-6">
+                                    <label for="state" class="form-label heading">State</label>
+                                    <select id="state" class="form-select p-input">
+                                        <option value="">select state</option>
+                                        <option value="KERALA">KERALA</option>
+                                        <option value="TAMIL NADU">TAMIL NADU</option>
+                                        <option value="KARNATAKA">KARNATAKA</option>
+                                    </select>
+                                    <P id="stateerror" class="errormsg"></P>
+                                </div>
+                            </div>
+                            <div class="row py-2 mb-3">
+                                <div class="col-sm-6">
+                                    <label for="city" class="form-label heading">City</label>
+                                    <input type="text" id="city" class="form-control p-input" placeholder="enter city">
+                                    <P id="cityerror" class="errormsg"></P>
+                                </div>
+                                <div class="col-sm-6">
+                                    <label for="exampleFormControlInput1" class="form-label heading">Pin/Zip</label>
+                                    <input type="text" id="pin" class="form-control p-input"
+                                        placeholder="enter zip/pin">
+                                    <P id="pinerror" class="errormsg"></P>
+                                </div>
+                            </div>
+
+                        </form>
+                        <div class="footer-btn">
+                            <button type="button" class="btnlight" id="cancel-btn"
+                                onclick="closeemployeepopup()">Cancel</button>
+                            <button type="button " class="btn-filled py-2" id="addemployee">Add Employee</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <!-- </div> -->
+
+
+        <div class="overlay" id="overlay"></div>
+        
+
+        <!-- EDIT EMPLOYEE -->
+
+        <div class="formEditEmployee" id="Employeeedit2">
+            <div class="addEmployeForm col-12">
+                <div class="addEmployeHead col-6">
+                    <span>Edit Employee</span>
+                </div>
+                <div class="exitLogo col-6">
+                    <button type="button" class="btn-close" aria-label="Close" onclick="closeeditemployeepopup()"></button>
+                </div>
+
+            </div>
+            <div class="cardImageSection">
+                <div class="cardImg col-2 my-3">
+                    <!-- <label for="upldimg" class="editimg">
+                        <img src="images/default avatar.png" alt="" id="editimage">
+                        <input type="file" id="editupload2" class="" accept="image/jpg,image/jpeg,image/png"
+                            name="avatar" hidden>
+                
+                    </label> -->
+
+                    <label for="editupload" class="">
+                        <img id="editEmployeeChangeImage2" src="images/default avatar.png" alt="" class="editimage">
+                        <input type="file" name="avatar" accept="image/jpg,image/jpeg,image/png" id="editupload2"
+                            name="avatar" >
+
+                    </label>
+                    <label for="editupload" type="label" id="editEmployeeChangeImage2" class="btn-imgChange">Change
+                        Image</label>
+                </div>
+
+            </div>
+
+            <form id="formedit2">
+                <div class="row py-2 first-row">
+                    <input type="text" hidden  id="empIdInp">
+               
+                    <div class="col-3">
+                        <label for="text" class="input-heading-important mb-2">Salutation </label>
+                        <select class="form-select input" id="editSalutation2" aria-label="Default select example">
+                            <option selected="">select</option>
+                            <option value="Mr">Mr</option>
+                            <option value="Mrs">Mrs</option>
+
+                        </select>
+                        <p class="editerrormsg" id="salutationedit"></p>
+                    </div>
+                    <div class="col-4">
+                        <label for="text" class="input-heading-important mb-2">First Name </label>
+                        <input class="form-control mute" id="editFirstName2" type="text" placeholder="enter your name"
+                            aria-label="default input example">
+                        <p class="editerrormsg" id="firstnameedit"></p>
+                    </div>
+                    <div class="col-5">
+                        <label for="text" class="input-heading-important mb-2">Last Name </label>
+                        <input class="form-control mute" id="editLastName2" type="text" placeholder="doe"
+                            aria-label="default input example">
+                        <p class="editerrormsg" id="lastnameeditedit"></p>
+                    </div>
+
+                </div>
+                <div class="row py-2 second-row">
+                    <div class="col-6">
+
+                        <label for="exampleFormControlInput1" class="input-heading-important mb-2">Email address
+                        </label>
+                        <input type="email" class="form-control mute" id="editEmail2" placeholder="mail@simmmple.com">
+                        <p class="editerrormsg" id="mailedit"></p>
+
+                    </div>
+                    <div class="col-6">
+                        <label for="text" class="input-heading-important mb-2">Mobile Number </label>
+                        <input class="form-control mute" id="editMobileNumber2" type="text"
+                            placeholder="enter mobile number" aria-label="default input example">
+                        <p class="editerrormsg" id="numberedit"></p>
+
+                    </div>
+                </div>
+                <div class="row py-2 third-row">
+                    <div class="col-6">
+                        <label for="text" class="input-heading-important mb-2">Date of Birth </label>
+                        <input type="date" class="form-control p-input" id="editDateOfBirth2"
+                            placeholder="select date of birth">
+                        <p class="editerrormsg" id="dobedit"></p>
+                    </div>
+                    <div class="col-6">
+                        <label for="text" class="input-heading-important mb-3">Gender </label>
+                        <div class="gender-radio">
+                            <div class="col-3">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="editgender" value="Male"
+                                        id="editmale2">
+                                    <label class="form-check-label" for="flexRadioDefault1">
+                                        Male
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-3">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="editgender" value="Female"
+                                        id="editFemale2">
+                                    <label class="form-check-label" for="flexRadioDefault1">
+                                        Female
+                                    </label>
+                                </div>
+
+                            </div>
+                        </div>
+                        <p class="editerrormsg" id="genderedit"></p>
+                    </div>
+
+                </div>
+                <div class="username row py-2">
+                    <div class="col-6">
+                        <label for="username" class="form-label heading">Username</label>
+                        <input type="text" id="editusrnm2" class="form-control p-input" placeholder="enter username">
+                        <P class="editerrormsg" id="usernameedit"></P>
+                    </div>
+
+                    <div class="col-6">
+                        <label for="password" class="form-label heading">password</label>
+                        <input type="password" id="editpsd2" class="form-control p-input" placeholder="enter password">
+                        <P class="editerrormsg" id="passwordedit"></P>
+                    </div>
+                </div>
+                <div class="row py-2">
+                    <div class="col-12">
+                        <label for="text" class="input-heading-important mb-2">Qualifications </label>
+                        <input class="form-control mute" id="editQualification2" type="text"
+                            placeholder="enter qualifications" aria-label="default input example">
+                        <p class="editerrormsg" id="qualificationedit"></p>
+                    </div>
+                </div>
+                <div class="row py-2">
+                    <div class="col-12">
+                        <label for="text" class="input-heading-important mb-2">Address </label>
+                        <input class="form-control mute" id="editAddress2" type="text" placeholder="enter address"
+                            aria-label="default input example">
+                        <p class="editerrormsg" id="addressedit"></p>
+                    </div>
+                </div>
+                <div class="row py-2">
+                    <div class="col-6">
+
+                        <label for="text" class="input-heading-important mb-2">Country </label>
+                        <select class="form-select input" id="editCountry2" aria-label="Default select example">
+                            <option selected="">select country</option>
+                            <option value="INDIA">INDIA</option>
+                            <option value="CHINA">CHINA</option>
+                            <option value="USA">USA</option>
+                        </select>
+                        <!-- <input type="text" class="form-control mute" id="editCountry" > -->
+
+                        <p class="editerrormsg" id="countryedit"></p>
+                    </div>
+                    <div class="col-6">
+                        <label for="text" class="input-heading-important mb-2">State </label>
+                        <select class="form-select input" id="editState2" aria-label="Default select example">
+                            <option selected="">select state</option>
+                            <option value="KERALA">KERALA</option>
+                            <option value="TAMIL NADU">TAMIL NADU</option>
+                            <option value="KARNATAKA">KARNATAKA</option>
+                        </select>
+                        <!-- <input type="text" class="form-control mute" id="editState" > -->
+                        <p class="editerrormsg" id="stateedit"></p>
+
+                    </div>
+                </div>
+                <div class="row py-2">
+                    <div class="col-6">
+
+                        <label for="exampleFormControlInput1" class="input-heading-important mb-2">City </label>
+                        <input type="email" class="form-control mute" id="editCity2" placeholder="enter city">
+
+                        <p class="editerrormsg" id="cityedit"></p>
+                    </div>
+                    <div class="col-6">
+                        <label for="text" class="input-heading-important mb-2">Pin/Zip </label>
+                        <input class="form-control mute" id="editPin2" type="text" placeholder="enter zip/pin"
+                            aria-label="default input example">
+                        <p class="editerrormsg" id="pinedit"></p>
+
+                    </div>
+
+                </div>
+            </form>
+            <div class="d-grid gap-2 mt-4 d-md-flex justify-content-md-end">
+                <button class="btn btn-primary me-md-2" type="button" onclick="closeeditpopup()">Cancel</button>
+                <button class="btn btn-primary" type="button" onclick="submitEditUser()" id="saveEditEmployee">Save Changes</button>
+            </div>
+
+
+
+
+
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+            crossorigin="anonymous"></script>
+        <script src="style.js"></script>
+       
+
+</body>
+
+</html>
